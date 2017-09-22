@@ -85,29 +85,29 @@ data of the instances are stored and with which type they should be stored.
         \MyVendor\MyExtension\Domain\Model\Organization {
             mapping {
                 tableName = tx_myextension_domain_model_party
-                recordType = \MyVendor\MyExtension\Domain\Model\Organization
+                recordType = MyVendor\MyExtension\Domain\Model\Organization
             }
             subclasses {
-                \MyVendor\MyExtension\Domain\Model\Company = \MyVendor\MyExtension\Domain\Model\Company
-                \MyVendor\MyExtension\Domain\Model\ScientificInstitution = \MyVendor\MyExtension\Domain\Model\ScientificInstitution
+                MyVendor\MyExtension\Domain\Model\Company = MyVendor\MyExtension\Domain\Model\Company
+                MyVendor\MyExtension\Domain\Model\ScientificInstitution = MyVendor\MyExtension\Domain\Model\ScientificInstitution
             }
         }
         \MyVendor\MyExtension\Domain\Model\Person {
             mapping {
                 tableName = tx_myextension_domain_model_party
-                recordType = \MyVendor\MyExtension\Domain\Model\Person
+                recordType = MyVendor\MyExtension\Domain\Model\Person
             }
         }
         \MyVendor\MyExtension\Domain\Model\Company {
             mapping {
                 tableName = tx_myextension_domain_model_party
-                recordType = \MyVendor\MyExtension\Domain\Model\Company
+                recordType = MyVendor\MyExtension\Domain\Model\Company
             }
         }
         \MyVendor\MyExtension\Domain\Model\ScientificInstitution {
             mapping {
                 tableName = tx_myextension_domain_model_party
-                recordType = \MyVendor\MyExtension\Domain\Model\ScientificInstitution
+                recordType = MyVendor\MyExtension\Domain\Model\ScientificInstitution
             }
         }
     }
@@ -138,13 +138,13 @@ including the following configuration to your TCA::
         'ctrl' => $TCA['tx_myextension_domain_model_party']['ctrl'],
         'types' => array(
             '0' => array('showitem' => 'record_type, name'),
-            '\MyVendor\MyExtension\Domain\Model\Organization' => array('showitem' => 'record_type,
+            'MyVendor\MyExtension\Domain\Model\Organization' => array('showitem' => 'record_type,
                 name, numberOfEmployees'),
-            '\MyVendor\MyExtension\Domain\Model\Person' => array('showitem' => 'record_type, name,
+            'MyVendor\MyExtension\Domain\Model\Person' => array('showitem' => 'record_type, name,
                 dateOfBirth'),
-            '\MyVendor\MyExtension\Domain\Model\Company' => array('showitem' => 'record_type, name,
+            'MyVendor\MyExtension\Domain\Model\Company' => array('showitem' => 'record_type, name,
                 numberOfEmployees, typeOfBusiness'),
-            '\MyVendor\MyExtension\Domain\Model\ScientificInstitution' => array('showitem' =>
+            'MyVendor\MyExtension\Domain\Model\ScientificInstitution' => array('showitem' =>
                 'record_type, name, numberOfEmployees, researchFocus')
         ),
         'columns' => array(
@@ -155,13 +155,13 @@ including the following configuration to your TCA::
                     'type' => 'select',
                     'items' => array(
                         array('undefined', '0'),
-                        array('Organization', '\MyVendor\MyExtension\Domain\Model\Organization'),
-                        array('Person', '\MyVendor\MyExtension\Domain\Model\Person'),
-                        array('Company', '\MyVendor\MyExtension\Domain\Model\Company'),
+                        array('Organization', 'MyVendor\MyExtension\Domain\Model\Organization'),
+                        array('Person', 'MyVendor\MyExtension\Domain\Model\Person'),
+                        array('Company', 'MyVendor\MyExtension\Domain\Model\Company'),
                         array('ScientificInstitution',
-                            '\MyVendor\MyExtension\Domain\Model\ScientificInstitution')
+                            'MyVendor\MyExtension\Domain\Model\ScientificInstitution')
                     ),
-                    'default' => '\MyVendor\MyExtension\Domain\Model\Person'
+                    'default' => 'MyVendor\MyExtension\Domain\Model\Person'
                 )
             ),
             ...
@@ -177,12 +177,12 @@ are displayed after a confirmation by TYPO3.
 You can access the objects via repositories as normal. In your controller the corresponding lines
 can look like this::
 
-    $companyRepository = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('\MyVendor\MyExtension\Domain\Repository\CompanyRepository');
+    $companyRepository = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('MyVendor\MyExtension\Domain\Repository\CompanyRepository');
     $companies = $companyRepository->findAll();
 
 You can also find straightforward all concret classas of a super class::
 
-    $organizationRepository = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('\MyVendor\MyExtension\Domain\Repository\OrganizationRepository');
+    $organizationRepository = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('MyVendor\MyExtension\Domain\Repository\OrganizationRepository');
     $organizations = $organizationRepository->findAll();
 
 In the result set ``$organizationRepository`` there are domain objects of the class
